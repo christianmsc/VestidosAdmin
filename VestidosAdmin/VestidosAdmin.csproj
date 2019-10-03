@@ -147,6 +147,12 @@
   <ItemGroup>
     <Folder Include="img\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cDados\cDados.csproj">
+      <Project>{36971c3a-9995-4b61-903b-a23e350944cc}</Project>
+      <Name>cDados</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
