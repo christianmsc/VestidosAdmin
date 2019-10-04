@@ -8,8 +8,17 @@ namespace cDados
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public DateTime DataNascimento { get; set; }
+        public string Logradouro { get; set; }
+        public string Numero { get; set; }
+        public string Complemento { get; set; }
+        public string Bairro { get; set; }
         public string Cidade { get; set; }
+        public string Estado { get; set; }
+        public string Cep { get; set; }
+        public string Cpf { get; set; }
+        public DateTime DataNascimento { get; set; }
+        public string Telefone { get; set; }
+        public string Foto { get; set; }
 
         public List<cUsuario> Listar(string condicao = null)
         {
@@ -28,8 +37,18 @@ namespace cDados
                 {
                     Id = Convert.ToInt32(registro["id"]),
                     Nome = registro["nome"].ToString(),
+                    Logradouro = registro["logradouro"].ToString(),
+                    Numero = registro["numero"].ToString(),
+                    Complemento = registro["complemento"].ToString(),
+                    Bairro = registro["bairro"].ToString(),
+                    Cidade = registro["cidade"].ToString(),
+                    Estado = registro["estado"].ToString(),
+                    Cep = registro["cep"].ToString(),
+                    Cpf = registro["cpf"].ToString(),
                     DataNascimento = Convert.ToDateTime(registro["data_nascimento"].ToString()),
-                    Cidade = registro["cidade"].ToString()
+                    Telefone = registro["telefone"].ToString(),
+                    Foto = registro["foto"].ToString(),
+
                 });
             }
             con.Close();

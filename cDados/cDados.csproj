@@ -61,6 +61,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cAluguel.cs" />
     <Compile Include="cVestido.cs" />
     <Compile Include="cUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

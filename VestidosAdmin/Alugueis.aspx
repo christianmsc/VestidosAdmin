@@ -2,5 +2,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    Aluguéis (em construção)
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Aluguéis</h1>
+    </div>
+    <asp:Label ID="lblSemRegistro" Text="Não há aluguéis a serem mostrados" runat="server" CssClass="h6 text-secondary d-flex justify-content-center" Visible="false"/>
+    <asp:GridView ID="gvAlugueis" runat="server" CssClass="table table-striped" GridLines="None" Visible="false">
+    </asp:GridView>
 </asp:Content>
