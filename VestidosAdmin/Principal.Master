@@ -8,9 +8,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+        <link rel="icon" type="image/png" href="img/icons/favicon.png"/>
+
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Vestidos - Admin</title>
+        <title>amei seu vestido!</title>
         <style>
           .bd-placeholder-img {
             font-size: 1.125rem;
@@ -35,7 +37,7 @@
     <body>
         <form id="form1" runat="server">
             <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-              <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Que vestido lindo!</a>
+              <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">amei seu vestido!</a>
               <input class="form-control form-control-dark w-100" type="text" placeholder="Procurar" aria-label="Procurar no site">
               <ul class="navbar-nav px-3">
                 <li class="nav-item text-nowrap">
@@ -60,12 +62,12 @@
                       </li>
                       <li class="nav-item">
                         <asp:HyperLink NavigateUrl="~/Vestidos.aspx" runat="server" CssClass="nav-link" >
-                           <span data-feather="file"></span> Vestidos
+                           <span data-feather="list"></span> Vestidos
                         </asp:HyperLink>
                       </li>
                       <li class="nav-item">
                         <asp:HyperLink NavigateUrl="~/Alugueis.aspx" runat="server" CssClass="nav-link" >
-                           <span data-feather="file"></span> Aluguéis
+                           <span data-feather="dollar-sign"></span> Aluguéis
                         </asp:HyperLink>
                       </li>
                     </ul>

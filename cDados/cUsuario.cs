@@ -80,5 +80,25 @@ namespace cDados
             con.Close();
             return usuario;
         }
+
+        public int? Logar(string email, string senha)
+        {
+            var connString = System.Configuration.ConfigurationManager.ConnectionStrings["vestidos_para_alugarConnectionString"].ConnectionString;
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = connString.ToString();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "SELECT id FROM Usuario WHERE email = '" + email + "' AND senha = '" + senha + "'";
+            con.Open();
+            SqlDataReader registro = cmd.ExecuteReader();
+            int? idUsuario = null;
+            registro.Read();
+            if (registro.HasRows)
+            {
+                idUsuario = Convert.ToInt32(registro["id"]);
+            }
+            con.Close();
+            return idUsuario;
+        }
     }
 }
