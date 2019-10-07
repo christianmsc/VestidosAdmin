@@ -19,5 +19,17 @@ namespace VestidosAdmin
             gvVestidos.DataSource = objVestido.Listar();
             gvVestidos.DataBind();
         }
+
+        protected void gvVestidos_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.Cells[1].Text = "Dono";
+                e.Row.Cells[4].Text = "Descrição";
+                e.Row.Cells[5].Text = "Preço";
+                e.Row.Cells[7].Text = "Relevância";
+                e.Row.Cells[8].Text = "Notificação";
+            }
+        }
     }
 }

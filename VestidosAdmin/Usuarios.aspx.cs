@@ -13,6 +13,19 @@ namespace VestidosAdmin
         {
 
         }
-        
+
+        protected void gvUsuarios_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(gvUsuarios, "Select$" + e.Row.RowIndex);
+                e.Row.Attributes["style"] = "cursor:pointer";
+            }
+        }
+
+        protected void gvUsuarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Response.Redirect("Usuarios.aspx?id=" + gvUsuarios.SelectedRow.Cells[0].Text);
+        }
     }
 }

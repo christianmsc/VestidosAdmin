@@ -28,5 +28,17 @@ namespace VestidosAdmin
                 lblSemRegistro.Visible = true;
             }
         }
+
+        protected void gvAlugueis_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.Cells[1].Text = "Cliente";
+                e.Row.Cells[2].Text = "Vestido";
+                e.Row.Cells[3].Text = "Início Aluguel";
+                e.Row.Cells[4].Text = "Fim Aluguel";
+                e.Row.Cells[5].Text = "Valor";
+            }
+        }
     }
 }
