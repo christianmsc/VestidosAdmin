@@ -26,6 +26,7 @@ namespace VestidosAdmin
             if (idUsuario != null)
             {
                 Session["idUsuario"] = idUsuario;
+                Session.Timeout = 1440;
                 Response.Redirect("Default.aspx");
             }
             else

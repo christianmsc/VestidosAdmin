@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace cDados
 {
@@ -45,7 +46,7 @@ namespace cDados
                     Estado = registro["estado"].ToString(),
                     Cep = registro["cep"].ToString(),
                     Cpf = registro["cpf"].ToString(),
-                    DataNascimento = Convert.ToDateTime(registro["data_nascimento"].ToString()),
+                    DataNascimento = DateTime.ParseExact(registro["data_nascimento"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture),
                     Telefone = registro["telefone"].ToString(),
                     Foto = registro["foto"].ToString(),
 
@@ -73,8 +74,17 @@ namespace cDados
                 {
                     Id = Convert.ToInt32(registro["id"]),
                     Nome = registro["nome"].ToString(),
+                    Logradouro = registro["logradouro"].ToString(),
+                    Numero = registro["numero"].ToString(),
+                    Complemento = registro["complemento"].ToString(),
+                    Bairro = registro["bairro"].ToString(),
+                    Cidade = registro["cidade"].ToString(),
+                    Estado = registro["estado"].ToString(),
+                    Cep = registro["cep"].ToString(),
+                    Cpf = registro["cpf"].ToString(),
                     DataNascimento = Convert.ToDateTime(registro["data_nascimento"].ToString()),
-                    Cidade = registro["cidade"].ToString()
+                    Telefone = registro["telefone"].ToString(),
+                    Foto = registro["foto"].ToString(),
                 };
             }
             con.Close();

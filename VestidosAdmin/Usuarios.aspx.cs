@@ -25,7 +25,7 @@ namespace VestidosAdmin
 
         protected void gvUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Response.Redirect("Usuarios.aspx?id=" + gvUsuarios.SelectedRow.Cells[0].Text);
+            Response.Redirect("Usuario.aspx?id=" + gvUsuarios.SelectedRow.Cells[0].Text);
         }
     }
 }
