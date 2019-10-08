@@ -11,9 +11,13 @@ namespace VestidosAdmin
     public partial class Usuario : System.Web.UI.Page
     {
         public cUsuario objUsuario = new cUsuario();
+        public bool temFoto;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             objUsuario = objUsuario.Abrir(Convert.ToInt32(Request.Params["id"]));
+
+            temFoto = System.IO.File.Exists(Server.MapPath("/img/" + objUsuario.Foto));
             DataBind();
         }
     }

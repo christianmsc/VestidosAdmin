@@ -9,8 +9,12 @@
         <div class="h6">Informações Pessoais</div>
         <div class="row py-2 border rounded bg-light mb-5">
             <div class="col-md-2">
-                <%--<img src="https://t4.ftcdn.net/jpg/01/12/09/17/500_F_112091769_vWEmDiwVIpO4H1plGuhYgnmduTuiGUh2.jpg" width="100%" height="100%" class="d-inline-block rounded-circle mr-1" alt="">--%>
-                <img src="img/<%# objUsuario.Foto %>" width="100%" height="100%" class="d-inline-block rounded-circle mr-1" alt="">
+                <div Visible=<%# System.IO.File.Exists(Server.MapPath("/img/" + objUsuario.Foto)) %> runat="server">
+                    <img src="img/<%# objUsuario.Foto %>" class="d-inline-block rounded-circle mr-1 img-fluid" />
+                </div>
+                <div Visible=<%# !System.IO.File.Exists(Server.MapPath("/img/" + objUsuario.Foto)) %> runat="server">
+                    <img src="https://t4.ftcdn.net/jpg/01/12/09/17/500_F_112091769_vWEmDiwVIpO4H1plGuhYgnmduTuiGUh2.jpg" width="100%" height="100%" class="d-inline-block rounded-circle mr-1" alt="">
+                </div>
             </div>
             <div class="col-md-10">
                 <div class="h4"><%# objUsuario.Nome %></div>
