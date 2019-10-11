@@ -71,6 +71,11 @@
                            <span data-feather="dollar-sign"></span> Aluguéis
                         </asp:HyperLink>
                       </li>
+                      <li class="nav-item">
+                        <asp:HyperLink NavigateUrl="~/Empresas.aspx" runat="server" CssClass="nav-link" >
+                           <span data-feather="briefcase"></span> Empresas
+                        </asp:HyperLink>
+                      </li>
                     </ul>
                   </div>
                 </nav>
