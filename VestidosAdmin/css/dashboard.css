@@ -104,3 +104,37 @@ body {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
+
+
+
+.navbar-vestido {
+    background: #e8519e;
+    background: -webkit-linear-gradient(bottom, #e8519e, #c77ff2);
+    background: -o-linear-gradient(bottom, #e8519e, #c77ff2);
+    background: -moz-linear-gradient(bottom, #e8519e, #c77ff2);
+    background: linear-gradient(bottom, #e8519e, #c77ff2);
+    opacity: 0.8;
+}
+
+.navbar-brand {
+     background-color: unset; 
+     box-shadow: none; 
+}
+
+.btn-vestido {
+    color: #fff;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.btn-vestido:hover {
+    background: #e8519e;
+}
+
+.form-control-dark::placeholder{
+    color: white;
+}
+
+.sidebar .nav-link.active {
+    color: #e8519e;
+}

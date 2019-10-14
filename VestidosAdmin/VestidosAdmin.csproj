@@ -91,6 +91,7 @@
     <Content Include="js\map-custom.js" />
     <Content Include="js\popper.min.js" />
     <Content Include="Login.aspx" />
+    <Content Include="Planos.aspx" />
     <Content Include="Usuario.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Vestidos.aspx" />
@@ -124,6 +125,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Planos.aspx.cs">
+      <DependentUpon>Planos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Planos.aspx.designer.cs">
+      <DependentUpon>Planos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>

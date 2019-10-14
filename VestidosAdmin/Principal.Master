@@ -36,13 +36,12 @@
     </head>
     <body>
         <form id="form1" runat="server">
-            <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-              <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="Default.aspx">amei seu vestido!</a>
-              <input class="form-control form-control-dark w-100" type="text" placeholder="Procurar" aria-label="Procurar no site">
+            <nav class="navbar navbar-vestido fixed-top flex-md-nowrap p-0">
+              <a class="navbar-brand col-sm-3 col-md-2 mr-0 text-white" href="Default.aspx">amei seu vestido!</a>
+              <input class="form-control form-control-dark mx-2 rounded w-100" type="text" placeholder="Procurar" aria-label="Procurar no site">
               <ul class="navbar-nav px-3">
                 <li class="nav-item text-nowrap">
-                  <%--<a class="nav-link" href="#">Sair</a>--%>
-                    <asp:Button ID="btnSair" Text="Sair" CssClass="nav-link btn btn-dark px-3" runat="server" OnClick="btnSair_Click" />
+                    <asp:Button ID="btnSair" Text="Sair" CssClass="btn btn-vestido px-3" runat="server" OnClick="btnSair_Click" />
                 </li>
               </ul>
             </nav>
@@ -74,6 +73,11 @@
                       <li class="nav-item">
                         <asp:HyperLink NavigateUrl="~/Empresas.aspx" runat="server" CssClass="nav-link" >
                            <span data-feather="briefcase"></span> Empresas
+                        </asp:HyperLink>
+                      </li>
+                      <li class="nav-item">
+                        <asp:HyperLink NavigateUrl="~/Planos.aspx" runat="server" CssClass="nav-link" >
+                           <span data-feather="credit-card"></span> Planos
                         </asp:HyperLink>
                       </li>
                     </ul>
