@@ -12,29 +12,29 @@
     type: 'line',
     data: {
       labels: [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
+        'Julho',
+        'Agosto',
+        'Setembro',
+        'Outubro',
+        'Novembro',
+        'Dezembro',
+        'Janeiro'
       ],
       datasets: [{
         data: [
-          15339,
-          21345,
-          18483,
-          24003,
-          23489,
-          24092,
-          12034
+          150,
+          180,
+          200,
+          250,
+          150,
+          100,
+          80
         ],
         lineTension: 0,
         backgroundColor: 'transparent',
-        borderColor: '#007bff',
+          borderColor: 'rgb(232, 81, 158)',
         borderWidth: 4,
-        pointBackgroundColor: '#007bff'
+          pointBackgroundColor: 'rgb(232, 81, 158)'
       }]
     },
     options: {
