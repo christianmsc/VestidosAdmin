@@ -44,7 +44,8 @@
     <div class="col-md-12 mb-3">
         <div class="form-group">
             <label for="exampleFormControlFile1">Foto</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            <asp:Image ImageUrl="<%# "fotos/" + objFoto.Nome %>" runat="server" Visible="<%# objFoto != null %>" />
+            <asp:FileUpload runat="server" CssClass="form-control-file" ID="fuFoto" accept="image/png, image/jpeg"/>
         </div>
     </div>
   </div>
