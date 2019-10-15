@@ -7,16 +7,16 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DE7A9AAD-003F-4170-835B-6AD63E1C4319}</ProjectGuid>
+    <ProjectGuid>{7CAA1C56-0296-4AD6-A126-688EBEAD6DEA}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VestidosAdmin</RootNamespace>
-    <AssemblyName>VestidosAdmin</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>api</RootNamespace>
+    <AssemblyName>api</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44367</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -43,9 +43,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -65,124 +62,21 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Alugueis.aspx" />
-    <Content Include="css\bootstrap-grid.css" />
-    <Content Include="css\bootstrap-grid.min.css" />
-    <Content Include="css\bootstrap-reboot.css" />
-    <Content Include="css\bootstrap-reboot.min.css" />
-    <Content Include="css\bootstrap.css" />
-    <Content Include="css\bootstrap.min.css" />
-    <Content Include="css\dashboard.css" />
-    <Content Include="css\fontaewsome.css" />
-    <Content Include="css\main.css" />
-    <Content Include="css\styles.css" />
-    <Content Include="css\util.css" />
-    <Content Include="Default.aspx" />
-    <Content Include="Empresa.aspx" />
-    <Content Include="Empresas.aspx" />
-    <Content Include="img\bg-01.jpg" />
-    <Content Include="js\bootstrap.bundle.js" />
-    <Content Include="js\bootstrap.bundle.min.js" />
-    <Content Include="js\bootstrap.js" />
-    <Content Include="js\bootstrap.min.js" />
-    <Content Include="js\dashboard.js" />
-    <Content Include="js\jquery-3.3.1.slim.min.js" />
-    <Content Include="js\jquery.min.js" />
-    <Content Include="js\main.js" />
-    <Content Include="js\map-custom.js" />
-    <Content Include="js\popper.min.js" />
-    <Content Include="Login.aspx" />
-    <Content Include="Planos.aspx" />
-    <Content Include="Usuario.aspx" />
-    <Content Include="Usuarios.aspx" />
-    <Content Include="Vestidos.aspx" />
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alugueis.aspx.cs">
-      <DependentUpon>Alugueis.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Alugueis.aspx.designer.cs">
-      <DependentUpon>Alugueis.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Empresa.aspx.cs">
-      <DependentUpon>Empresa.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Empresa.aspx.designer.cs">
-      <DependentUpon>Empresa.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Empresas.aspx.cs">
-      <DependentUpon>Empresas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Empresas.aspx.designer.cs">
-      <DependentUpon>Empresas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Planos.aspx.cs">
-      <DependentUpon>Planos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Planos.aspx.designer.cs">
-      <DependentUpon>Planos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Principal.Master.cs">
-      <DependentUpon>Principal.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Principal.Master.designer.cs">
-      <DependentUpon>Principal.Master</DependentUpon>
+    <Compile Include="Login.ashx.cs">
+      <DependentUpon>Login.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Usuario.aspx.cs">
-      <DependentUpon>Usuario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Usuario.aspx.designer.cs">
-      <DependentUpon>Usuario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Usuarios.aspx.cs">
-      <DependentUpon>Usuarios.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Usuarios.aspx.designer.cs">
-      <DependentUpon>Usuarios.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vestidos.aspx.cs">
-      <DependentUpon>Vestidos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vestidos.aspx.designer.cs">
-      <DependentUpon>Vestidos.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="js\bootstrap.bundle.js.map" />
-    <Content Include="js\bootstrap.bundle.min.js.map" />
-    <Content Include="js\bootstrap.js.map" />
-    <Content Include="js\bootstrap.min.js.map" />
-    <Content Include="css\bootstrap-grid.css.map" />
-    <Content Include="css\bootstrap-grid.min.css.map" />
-    <Content Include="css\bootstrap-reboot.css.map" />
-    <Content Include="css\bootstrap-reboot.min.css.map" />
-    <Content Include="css\bootstrap.css.map" />
-    <Content Include="css\bootstrap.min.css.map" />
-    <Content Include="Principal.Master" />
+    <Content Include="Login.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -191,7 +85,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\cDados\cDados.csproj">
       <Project>{36971c3a-9995-4b61-903b-a23e350944cc}</Project>
@@ -211,9 +104,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>56144</DevelopmentServerPort>
+          <DevelopmentServerPort>22505</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:56144/</IISUrl>
+          <IISUrl>http://localhost:44367/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
