@@ -5,49 +5,43 @@ using System.Globalization;
 
 namespace cDados
 {
-    public class cPlano
+    public class cFoto
     {
         #region INFOS
 
         private SqlConnection connection;
-        private const string TABELA = "Plano";
+        private const string TABELA = "Foto";
 
         #endregion
 
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Descricao { get; set; }
-        public float Valor { get; set; }
-        public int QtdMaxVestidos { get; set; }
 
-        public cPlano()
+        public cFoto()
         {
             var connString = System.Configuration.ConfigurationManager.ConnectionStrings["vestidos_para_alugarConnectionString"].ConnectionString;
             connection = new SqlConnection();
             connection.ConnectionString = connString.ToString();
         }
 
-        public List<cPlano> Listar(string condicao = null)
+        public List<cFoto> Listar(string condicao = null)
         {
-            List<cPlano> planos;
+            List<cFoto> fotos;
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = condicao == null ? "SELECT * FROM " + TABELA : "SELECT * FROM " + TABELA + " WHERE " + condicao;
             try
             {
-                planos = new List<cPlano>();
+                fotos = new List<cFoto>();
                 connection.Open();
                 SqlDataReader registro = cmd.ExecuteReader();
 
                 while (registro.Read())
                 {
-                    planos.Add(new cPlano()
+                    fotos.Add(new cFoto()
                     {
                         Id = Convert.ToInt32(registro["id"]),
-                        Nome = registro["nome"].ToString(),
-                        Descricao = registro["descricao"].ToString(),
-                        Valor = float.Parse(registro["valor"].ToString()),
-                        QtdMaxVestidos = Convert.ToInt32(registro["qtdMaxVestidos"].ToString())
+                        Nome = registro["nome"].ToString()
                     });
                 }
             }
@@ -60,12 +54,12 @@ namespace cDados
                 connection.Close();
             }
 
-            return planos;
+            return fotos;
         }
 
-        public cPlano Abrir(int id, string condicao = null)
+        public cFoto Abrir(int id, string condicao = null)
         {
-            cPlano plano;
+            cFoto foto;
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = condicao == null ? "SELECT * FROM " + TABELA + " WHERE id = " + id : "SELECT * FROM " + TABELA + " WHERE id = " + id + " AND " + condicao;
@@ -73,17 +67,14 @@ namespace cDados
             {
                 connection.Open();
                 SqlDataReader registro = cmd.ExecuteReader();
-                plano = null;
+                foto = null;
                 registro.Read();
                 if (registro.HasRows)
                 {
-                    plano = new cPlano()
+                    foto = new cFoto()
                     {
                         Id = Convert.ToInt32(registro["id"]),
-                        Nome = registro["nome"].ToString(),
-                        Descricao = registro["descricao"].ToString(),
-                        Valor = float.Parse(registro["valor"].ToString()),
-                        QtdMaxVestidos = Convert.ToInt32(registro["qtdMaxVestidos"].ToString())
+                        Nome = registro["nome"].ToString()
                     };
                 }
             }
@@ -96,18 +87,15 @@ namespace cDados
                 connection.Close();
             }
 
-            return plano;
+            return foto;
         }
 
-        public cPlano Inserir(cPlano obj)
+        public cFoto Inserir(cFoto obj)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "INSERT INTO " + TABELA + "(nome,descricao,valor,qtdMaxVestidos) VALUES (@nome,@descricao,@valor,@qtdMaxVestidos);select @@IDENTITY;";
+            cmd.CommandText = "INSERT INTO " + TABELA + "(nome) VALUES (@nome);select @@IDENTITY;";
             cmd.Parameters.AddWithValue("nome", obj.Nome);
-            cmd.Parameters.AddWithValue("descricao", obj.Descricao);
-            cmd.Parameters.AddWithValue("valor", obj.Valor);
-            cmd.Parameters.AddWithValue("qtdMaxVestidos", obj.QtdMaxVestidos);
 
             try
             {
@@ -126,16 +114,13 @@ namespace cDados
             return obj;
         }
 
-        public void Alterar(cPlano obj)
+        public void Alterar(cFoto obj)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "UPDATE " + TABELA + " SET nome=@nome,descricao=@descricao,valor=@valor,qtdMaxVestidos=@qtdMaxVestidos WHERE id = @id;";
+            cmd.CommandText = "UPDATE " + TABELA + " SET nome=@nome WHERE id = @id;";
             cmd.Parameters.AddWithValue("id", obj.Id);
             cmd.Parameters.AddWithValue("nome", obj.Nome);
-            cmd.Parameters.AddWithValue("descricao", obj.Descricao);
-            cmd.Parameters.AddWithValue("valor", obj.Valor);
-            cmd.Parameters.AddWithValue("qtdMaxVestidos", obj.QtdMaxVestidos);
 
             try
             {

@@ -9,17 +9,13 @@ namespace cDados
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Logradouro { get; set; }
-        public string Numero { get; set; }
-        public string Complemento { get; set; }
-        public string Bairro { get; set; }
-        public string Cidade { get; set; }
-        public string Estado { get; set; }
-        public string Cep { get; set; }
+        public int IdLogradouro { get; set; }
         public string Cpf { get; set; }
         public DateTime DataNascimento { get; set; }
         public string Telefone { get; set; }
-        public string Foto { get; set; }
+        public int? IdFoto { get; set; }
+        public string Email { get; set; }
+        public string Senha { get; set; }
 
         public List<cUsuario> Listar(string condicao = null)
         {
@@ -38,18 +34,13 @@ namespace cDados
                 {
                     Id = Convert.ToInt32(registro["id"]),
                     Nome = registro["nome"].ToString(),
-                    Logradouro = registro["logradouro"].ToString(),
-                    Numero = registro["numero"].ToString(),
-                    Complemento = registro["complemento"].ToString(),
-                    Bairro = registro["bairro"].ToString(),
-                    Cidade = registro["cidade"].ToString(),
-                    Estado = registro["estado"].ToString(),
-                    Cep = registro["cep"].ToString(),
+                    IdLogradouro = Convert.ToInt32(registro["idLogradouro"].ToString()),
                     Cpf = registro["cpf"].ToString(),
-                    DataNascimento = DateTime.ParseExact(registro["data_nascimento"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture),
+                    DataNascimento = DateTime.ParseExact(registro["dataNascimento"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture),
                     Telefone = registro["telefone"].ToString(),
-                    Foto = registro["foto"].ToString(),
-
+                    IdFoto = registro["idFoto"] != System.DBNull.Value ? (int?)Convert.ToInt32(registro["idFoto"]) : null,
+                    Email = registro["email"].ToString(),
+                    Senha = registro["senha"].ToString()
                 });
             }
             con.Close();
@@ -74,17 +65,13 @@ namespace cDados
                 {
                     Id = Convert.ToInt32(registro["id"]),
                     Nome = registro["nome"].ToString(),
-                    Logradouro = registro["logradouro"].ToString(),
-                    Numero = registro["numero"].ToString(),
-                    Complemento = registro["complemento"].ToString(),
-                    Bairro = registro["bairro"].ToString(),
-                    Cidade = registro["cidade"].ToString(),
-                    Estado = registro["estado"].ToString(),
-                    Cep = registro["cep"].ToString(),
+                    IdLogradouro = Convert.ToInt32(registro["idLogradouro"].ToString()),
                     Cpf = registro["cpf"].ToString(),
-                    DataNascimento = Convert.ToDateTime(registro["data_nascimento"].ToString()),
+                    DataNascimento = DateTime.Parse(registro["dataNascimento"].ToString()),
                     Telefone = registro["telefone"].ToString(),
-                    Foto = registro["foto"].ToString(),
+                    IdFoto = registro["idFoto"] != System.DBNull.Value ? (int?)Convert.ToInt32(registro["idFoto"]) : null,
+                    Email = registro["email"].ToString(),
+                    Senha = registro["senha"].ToString()
                 };
             }
             con.Close();

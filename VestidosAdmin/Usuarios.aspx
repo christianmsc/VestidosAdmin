@@ -7,13 +7,13 @@
     </div>
     <asp:GridView runat="server" ID="gvUsuarios" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource1" CssClass="table table-striped" GridLines="None" OnRowDataBound="gvUsuarios_RowDataBound" OnSelectedIndexChanged="gvUsuarios_SelectedIndexChanged">
         <Columns>
-            <asp:BoundField DataField="id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-            <asp:BoundField DataField="nome" HeaderText="Nome" SortExpression="nome" />
-            <asp:BoundField DataField="cidade" HeaderText="Cidade" SortExpression="cidade" />
-            <asp:BoundField DataField="estado" HeaderText="Estado" SortExpression="estado" />
-            <asp:BoundField DataField="data_nascimento" HeaderText="Nascimento" SortExpression="data_nascimento" />
-            <asp:BoundField DataField="telefone" HeaderText="Telefone" SortExpression="telefone" />
+            <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+            <asp:BoundField DataField="nome" HeaderText="nome" SortExpression="nome" />
+            <asp:BoundField DataField="cpf" HeaderText="cpf" SortExpression="cpf" />
+            <asp:BoundField DataField="dataNascimento" HeaderText="dataNascimento" SortExpression="dataNascimento" />
+            <asp:BoundField DataField="telefone" HeaderText="telefone" SortExpression="telefone" />
+            <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
         </Columns>
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:vestidos_para_alugarConnectionString %>" SelectCommand="SELECT [id], [nome], [cidade], [estado], [data_nascimento], [telefone] FROM [Usuario] ORDER BY [id] DESC"></asp:SqlDataSource>   
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:vestidos_para_alugarConnectionString %>" SelectCommand="SELECT [id], [nome], [cpf], [dataNascimento], [telefone], [email] FROM [Usuario]"></asp:SqlDataSource>   
 </asp:Content>

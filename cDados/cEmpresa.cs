@@ -21,7 +21,7 @@ namespace cDados
         public string Cnpj { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
-        public string Foto { get; set; }
+        public int? IdFoto { get; set; }
         public string Login { get; set; }
         public string Senha { get; set; }
         public int IdLogradouro { get; set; }
@@ -63,7 +63,7 @@ namespace cDados
                         Cnpj = registro["cnpj"].ToString(),
                         Telefone = registro["telefone"].ToString(),
                         Email = registro["email"].ToString(),
-                        Foto = registro["foto"].ToString(),
+                        IdFoto = registro["idFoto"] != System.DBNull.Value ? (int?)Convert.ToInt32(registro["idFoto"]) : null,
                         Login = registro["login"].ToString(),
                         Senha = registro["senha"].ToString(),
                         IdLogradouro = Convert.ToInt32(registro["idLogradouro"].ToString()),
@@ -108,7 +108,7 @@ namespace cDados
                         Cnpj = registro["cnpj"].ToString(),
                         Telefone = registro["telefone"].ToString(),
                         Email = registro["email"].ToString(),
-                        Foto = registro["foto"].ToString(),
+                        IdFoto = registro["idFoto"] != System.DBNull.Value ? (int?)Convert.ToInt32(registro["idFoto"]) : null,
                         Login = registro["login"].ToString(),
                         Senha = registro["senha"].ToString(),
                         IdLogradouro = Convert.ToInt32(registro["idLogradouro"].ToString()),
@@ -136,13 +136,13 @@ namespace cDados
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "INSERT INTO " + TABELA + "(id,nome,cnpj,telefone,email,foto,login,senha,idLogradouro,idPlano) VALUES (@id,@nome,@cnpj,@telefone,@email,@foto,@login,@senha,@idLogradouro,@idPlano)";
+            cmd.CommandText = "INSERT INTO " + TABELA + "(id,nome,cnpj,telefone,email,idFoto,login,senha,idLogradouro,idPlano) VALUES (@id,@nome,@cnpj,@telefone,@email,@idFoto,@login,@senha,@idLogradouro,@idPlano)";
             cmd.Parameters.AddWithValue("id", obj.Id);
             cmd.Parameters.AddWithValue("nome", obj.Nome);
             cmd.Parameters.AddWithValue("cnpj", obj.Cnpj);
             cmd.Parameters.AddWithValue("telefone", obj.Telefone);
             cmd.Parameters.AddWithValue("email", obj.Email);
-            cmd.Parameters.AddWithValue("foto", obj.Foto);
+            cmd.Parameters.AddWithValue("idFoto", obj.IdFoto);
             cmd.Parameters.AddWithValue("login", obj.Login);
             cmd.Parameters.AddWithValue("senha", obj.Senha);
             cmd.Parameters.AddWithValue("idLogradouro", obj.IdLogradouro);
@@ -173,13 +173,13 @@ namespace cDados
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "UPDATE " + TABELA + " SET nome=@nome,cnpj=@cnpj,telefone=@telefone,email=@email,foto=@foto,login=@login,senha=@senha,idLogradouro=@idLogradouro,idPlano=@idPlano WHERE id = @id;";
+            cmd.CommandText = "UPDATE " + TABELA + " SET nome=@nome,cnpj=@cnpj,telefone=@telefone,email=@email,idFoto=@idFoto,login=@login,senha=@senha,idLogradouro=@idLogradouro,idPlano=@idPlano WHERE id = @id;";
             cmd.Parameters.AddWithValue("id", obj.Nome);
             cmd.Parameters.AddWithValue("nome", obj.Nome);
             cmd.Parameters.AddWithValue("cnpj", obj.Cnpj);
             cmd.Parameters.AddWithValue("telefone", obj.Telefone);
             cmd.Parameters.AddWithValue("email", obj.Email);
-            cmd.Parameters.AddWithValue("foto", obj.Foto);
+            cmd.Parameters.AddWithValue("idFoto", obj.IdFoto);
             cmd.Parameters.AddWithValue("login", obj.Login);
             cmd.Parameters.AddWithValue("senha", obj.Senha);
             cmd.Parameters.AddWithValue("idLogradouro", obj.IdLogradouro);

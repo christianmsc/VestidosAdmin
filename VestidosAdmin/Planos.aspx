@@ -25,7 +25,7 @@
                     <asp:Label ID="valorLabel" runat="server" Text='<%# Eval("valor") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="qtd_max_vestidosLabel" runat="server" Text='<%# Eval("qtd_max_vestidos") %>' />
+                    <asp:Label ID="qtdMaxVestidosLabel" runat="server" Text='<%# Eval("qtdMaxVestidos") %>' />
                 </td>
             </tr>
         </AlternatingItemTemplate>
@@ -48,7 +48,7 @@
                     <asp:TextBox ID="valorTextBox" runat="server" Text='<%# Bind("valor") %>' />
                 </td>
                 <td>
-                    <asp:TextBox ID="qtd_max_vestidosTextBox" runat="server" Text='<%# Bind("qtd_max_vestidos") %>' />
+                    <asp:TextBox ID="qtdMaxVestidosTextBox" runat="server" Text='<%# Bind("qtdMaxVestidos") %>' />
                 </td>
             </tr>
         </EditItemTemplate>
@@ -76,7 +76,7 @@
                     <asp:TextBox ID="valorTextBox" runat="server" Text='<%# Bind("valor") %>' CssClass="form-control" placeholder="Valor" />
                 </td>
                 <td>
-                    <asp:TextBox ID="qtd_max_vestidosTextBox" runat="server" Text='<%# Bind("qtd_max_vestidos") %>' CssClass="form-control" placeholder="Qtd. Máx. Vestidos" />
+                    <asp:TextBox ID="qtdMaxVestidosTextBox" runat="server" Text='<%# Bind("qtdMaxVestidos") %>' CssClass="form-control" placeholder="Qtd. Máx. Vestidos" />
                 </td>
             </tr>
         </InsertItemTemplate>
@@ -99,7 +99,7 @@
                     <asp:Label ID="valorLabel" runat="server" Text='<%# Eval("valor") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="qtd_max_vestidosLabel" runat="server" Text='<%# Eval("qtd_max_vestidos") %>' />
+                    <asp:Label ID="qtdMaxVestidosLabel" runat="server" Text='<%# Eval("qtdMaxVestidos") %>' />
                 </td>
             </tr>
         </ItemTemplate>
@@ -151,12 +151,12 @@
                     <asp:Label ID="valorLabel" runat="server" Text='<%# Eval("valor") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="qtd_max_vestidosLabel" runat="server" Text='<%# Eval("qtd_max_vestidos") %>' />
+                    <asp:Label ID="qtdMaxVestidosLabel" runat="server" Text='<%# Eval("qtdMaxVestidos") %>' />
                 </td>
             </tr>
         </SelectedItemTemplate>
     </asp:ListView>
-     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:vestidos_para_alugarConnectionString %>" DeleteCommand="DELETE FROM [Plano] WHERE [id] = @id" InsertCommand="INSERT INTO [Plano] ([nome], [descricao], [valor], [qtd_max_vestidos]) VALUES (@nome, @descricao, @valor, @qtd_max_vestidos)" SelectCommand="SELECT [id], [nome], [descricao], [valor], [qtd_max_vestidos] FROM [Plano]" UpdateCommand="UPDATE [Plano] SET [nome] = @nome, [descricao] = @descricao, [valor] = @valor, [qtd_max_vestidos] = @qtd_max_vestidos WHERE [id] = @id">
+     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:vestidos_para_alugarConnectionString %>" DeleteCommand="DELETE FROM [Plano] WHERE [id] = @id" InsertCommand="INSERT INTO [Plano] ([nome], [descricao], [valor], [qtdMaxVestidos]) VALUES (@nome, @descricao, @valor, @qtdMaxVestidos)" SelectCommand="SELECT [id], [nome], [descricao], [valor], [qtdMaxVestidos] FROM [Plano]" UpdateCommand="UPDATE [Plano] SET [nome] = @nome, [descricao] = @descricao, [valor] = @valor, [qtdMaxVestidos] = @qtdMaxVestidos WHERE [id] = @id">
          <DeleteParameters>
              <asp:Parameter Name="id" Type="Int32" />
          </DeleteParameters>
@@ -164,13 +164,13 @@
              <asp:Parameter Name="nome" Type="String" />
              <asp:Parameter Name="descricao" Type="String" />
              <asp:Parameter Name="valor" Type="Double" />
-             <asp:Parameter Name="qtd_max_vestidos" Type="Int32" />
+             <asp:Parameter Name="qtdMaxVestidos" Type="Int32" />
          </InsertParameters>
          <UpdateParameters>
              <asp:Parameter Name="nome" Type="String" />
              <asp:Parameter Name="descricao" Type="String" />
              <asp:Parameter Name="valor" Type="Double" />
-             <asp:Parameter Name="qtd_max_vestidos" Type="Int32" />
+             <asp:Parameter Name="qtdMaxVestidos" Type="Int32" />
              <asp:Parameter Name="id" Type="Int32" />
          </UpdateParameters>
      </asp:SqlDataSource>

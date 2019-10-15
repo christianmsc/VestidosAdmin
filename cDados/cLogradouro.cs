@@ -5,49 +5,57 @@ using System.Globalization;
 
 namespace cDados
 {
-    public class cPlano
+    public class cLogradouro
     {
         #region INFOS
 
         private SqlConnection connection;
-        private const string TABELA = "Plano";
+        private const string TABELA = "Logradouro";
 
         #endregion
 
         public int Id { get; set; }
-        public string Nome { get; set; }
-        public string Descricao { get; set; }
-        public float Valor { get; set; }
-        public int QtdMaxVestidos { get; set; }
+        public string Rua { get; set; }
+        public string Numero { get; set; }
+        public string Complemento { get; set; }
+        public string Bairro { get; set; }
+        public string Cidade { get; set; }
+        public string Estado { get; set; }
+        public string Cep { get; set; }
 
-        public cPlano()
+
+        public cLogradouro()
         {
             var connString = System.Configuration.ConfigurationManager.ConnectionStrings["vestidos_para_alugarConnectionString"].ConnectionString;
             connection = new SqlConnection();
             connection.ConnectionString = connString.ToString();
         }
 
-        public List<cPlano> Listar(string condicao = null)
+        public List<cLogradouro> Listar(string condicao = null)
         {
-            List<cPlano> planos;
+            List<cLogradouro> logradouros
+                ;
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = condicao == null ? "SELECT * FROM " + TABELA : "SELECT * FROM " + TABELA + " WHERE " + condicao;
             try
             {
-                planos = new List<cPlano>();
+                logradouros = new List<cLogradouro>();
                 connection.Open();
                 SqlDataReader registro = cmd.ExecuteReader();
 
                 while (registro.Read())
                 {
-                    planos.Add(new cPlano()
+                    logradouros.Add(new cLogradouro()
                     {
                         Id = Convert.ToInt32(registro["id"]),
-                        Nome = registro["nome"].ToString(),
-                        Descricao = registro["descricao"].ToString(),
-                        Valor = float.Parse(registro["valor"].ToString()),
-                        QtdMaxVestidos = Convert.ToInt32(registro["qtdMaxVestidos"].ToString())
+                        Rua = registro["rua"].ToString(),
+                        Numero = registro["numero"].ToString(),
+                        Complemento = registro["complemento"].ToString(),
+                        Bairro =registro["bairro"].ToString(),
+                        Cidade = registro["cidade"].ToString(),
+                        Estado = registro["estado"].ToString(),
+                        Cep = registro["cep"].ToString()
                     });
                 }
             }
@@ -60,12 +68,12 @@ namespace cDados
                 connection.Close();
             }
 
-            return planos;
+            return logradouros;
         }
 
-        public cPlano Abrir(int id, string condicao = null)
+        public cLogradouro Abrir(int id, string condicao = null)
         {
-            cPlano plano;
+            cLogradouro logradouro;
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = condicao == null ? "SELECT * FROM " + TABELA + " WHERE id = " + id : "SELECT * FROM " + TABELA + " WHERE id = " + id + " AND " + condicao;
@@ -73,17 +81,20 @@ namespace cDados
             {
                 connection.Open();
                 SqlDataReader registro = cmd.ExecuteReader();
-                plano = null;
+                logradouro = null;
                 registro.Read();
                 if (registro.HasRows)
                 {
-                    plano = new cPlano()
+                    logradouro = new cLogradouro()
                     {
                         Id = Convert.ToInt32(registro["id"]),
-                        Nome = registro["nome"].ToString(),
-                        Descricao = registro["descricao"].ToString(),
-                        Valor = float.Parse(registro["valor"].ToString()),
-                        QtdMaxVestidos = Convert.ToInt32(registro["qtdMaxVestidos"].ToString())
+                        Rua = registro["rua"].ToString(),
+                        Numero = registro["numero"].ToString(),
+                        Complemento = registro["complemento"].ToString(),
+                        Bairro = registro["bairro"].ToString(),
+                        Cidade = registro["cidade"].ToString(),
+                        Estado = registro["estado"].ToString(),
+                        Cep = registro["cep"].ToString()
                     };
                 }
             }
@@ -96,18 +107,21 @@ namespace cDados
                 connection.Close();
             }
 
-            return plano;
+            return logradouro;
         }
 
-        public cPlano Inserir(cPlano obj)
+        public cLogradouro Inserir(cLogradouro obj)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "INSERT INTO " + TABELA + "(nome,descricao,valor,qtdMaxVestidos) VALUES (@nome,@descricao,@valor,@qtdMaxVestidos);select @@IDENTITY;";
-            cmd.Parameters.AddWithValue("nome", obj.Nome);
-            cmd.Parameters.AddWithValue("descricao", obj.Descricao);
-            cmd.Parameters.AddWithValue("valor", obj.Valor);
-            cmd.Parameters.AddWithValue("qtdMaxVestidos", obj.QtdMaxVestidos);
+            cmd.CommandText = "INSERT INTO " + TABELA + "(rua,numero,complemento,bairro,cidade,estado,cep) VALUES (@rua,@numero,@complemento,@bairro,@cidade,@estado,@cep);select @@IDENTITY;";
+            cmd.Parameters.AddWithValue("rua", obj.Rua);
+            cmd.Parameters.AddWithValue("numero", obj.Numero);
+            cmd.Parameters.AddWithValue("complemento", obj.Complemento);
+            cmd.Parameters.AddWithValue("bairro", obj.Bairro);
+            cmd.Parameters.AddWithValue("cidade", obj.Cidade);
+            cmd.Parameters.AddWithValue("estado", obj.Estado);
+            cmd.Parameters.AddWithValue("cep", obj.Cep);
 
             try
             {
@@ -126,16 +140,19 @@ namespace cDados
             return obj;
         }
 
-        public void Alterar(cPlano obj)
+        public void Alterar(cLogradouro obj)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "UPDATE " + TABELA + " SET nome=@nome,descricao=@descricao,valor=@valor,qtdMaxVestidos=@qtdMaxVestidos WHERE id = @id;";
+            cmd.CommandText = "UPDATE " + TABELA + " SET rua=@rua,numero=@numero,complemento=@complemento,bairro=@bairro,cidade=@cidade,estado=@estado,cep=@cep WHERE id = @id;";
             cmd.Parameters.AddWithValue("id", obj.Id);
-            cmd.Parameters.AddWithValue("nome", obj.Nome);
-            cmd.Parameters.AddWithValue("descricao", obj.Descricao);
-            cmd.Parameters.AddWithValue("valor", obj.Valor);
-            cmd.Parameters.AddWithValue("qtdMaxVestidos", obj.QtdMaxVestidos);
+            cmd.Parameters.AddWithValue("rua", obj.Rua);
+            cmd.Parameters.AddWithValue("numero", obj.Numero);
+            cmd.Parameters.AddWithValue("complemento", obj.Complemento);
+            cmd.Parameters.AddWithValue("bairro", obj.Bairro);
+            cmd.Parameters.AddWithValue("cidade", obj.Cidade);
+            cmd.Parameters.AddWithValue("estado", obj.Estado);
+            cmd.Parameters.AddWithValue("cep", obj.Cep);
 
             try
             {

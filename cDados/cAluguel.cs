@@ -8,13 +8,12 @@ namespace cDados
     public class cAluguel
     {
         public int Id { get; set; }
-        public int IdUsuarioAlugou { get; set; }
+        public int IdUsuario { get; set; }
         public int IdVestido { get; set; }
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
         public float PrecoFinal { get; set; }
         public bool Ativo { get; set; }
-        public bool Entregue { get; set; }
         
         public List<cAluguel> Listar(string condicao = null)
         {
@@ -32,13 +31,12 @@ namespace cDados
                 alugueis.Add(new cAluguel()
                 {
                     Id = Convert.ToInt32(registro["id"]),
-                    IdUsuarioAlugou = Convert.ToInt32(registro["id_usuario_alugou"]),
-                    IdVestido = Convert.ToInt32(registro["id_vestido"]),
-                    DataInicio = Convert.ToDateTime(registro["data_inicio"].ToString()),
-                    DataFim = Convert.ToDateTime(registro["data_fim"].ToString()),
-                    PrecoFinal = float.Parse(registro["preco_final"].ToString(), CultureInfo.InvariantCulture),
-                    Ativo = Boolean.Parse(registro["ativo"].ToString()),
-                    Entregue = Boolean.Parse(registro["entregue"].ToString())
+                    IdUsuario = Convert.ToInt32(registro["idUsuario"]),
+                    IdVestido = Convert.ToInt32(registro["idVestido"]),
+                    DataInicio = Convert.ToDateTime(registro["dataInicio"].ToString()),
+                    DataFim = Convert.ToDateTime(registro["dataFim"].ToString()),
+                    PrecoFinal = float.Parse(registro["precoFinal"].ToString(), CultureInfo.InvariantCulture),
+                    Ativo = Boolean.Parse(registro["ativo"].ToString())
                 });
             }
             con.Close();
@@ -62,13 +60,12 @@ namespace cDados
                 aluguel = new cAluguel()
                 {
                     Id = Convert.ToInt32(registro["id"]),
-                    IdUsuarioAlugou = Convert.ToInt32(registro["id_usuario_alugou"]),
-                    IdVestido = Convert.ToInt32(registro["id_vestido"]),
-                    DataInicio = Convert.ToDateTime(registro["data_inicio"].ToString()),
-                    DataFim = Convert.ToDateTime(registro["data_fim"].ToString()),
-                    PrecoFinal = float.Parse(registro["preco_final"].ToString(), CultureInfo.InvariantCulture),
-                    Ativo = Boolean.Parse(registro["ativo"].ToString()),
-                    Entregue = Boolean.Parse(registro["entregue"].ToString())
+                    IdUsuario = Convert.ToInt32(registro["idUsuario"]),
+                    IdVestido = Convert.ToInt32(registro["idVestido"]),
+                    DataInicio = Convert.ToDateTime(registro["dataInicio"].ToString()),
+                    DataFim = Convert.ToDateTime(registro["dataFim"].ToString()),
+                    PrecoFinal = float.Parse(registro["precoFinal"].ToString(), CultureInfo.InvariantCulture),
+                    Ativo = Boolean.Parse(registro["ativo"].ToString())
                 };
             }
             con.Close();

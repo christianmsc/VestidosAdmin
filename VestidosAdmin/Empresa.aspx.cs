@@ -43,7 +43,7 @@ namespace VestidosAdmin
             empresa.Cnpj = txbCnpj.Text;
             empresa.Telefone = txbTelefone.Text;
             empresa.Email = txbEmail.Text;
-            empresa.Foto = "foto1.png";
+            empresa.IdFoto = null;
             empresa.Login = txbLogin.Text;
             empresa.Senha = txbSenha.Text;
             empresa.IdLogradouro = 1;
