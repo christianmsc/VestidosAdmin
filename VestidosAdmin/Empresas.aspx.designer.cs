@@ -13,6 +13,15 @@ namespace VestidosAdmin {
     public partial class Empresas {
         
         /// <summary>
+        /// btnNovaEmpresa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNovaEmpresa;
+        
+        /// <summary>
         /// grdEmpresas control.
         /// </summary>
         /// <remarks>

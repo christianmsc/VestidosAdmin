@@ -27,6 +27,22 @@ namespace VestidosAdmin
                 e.Row.Cells[8].Text = "Logradouro";
                 e.Row.Cells[9].Text = "Plano";
             }
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(grdEmpresas, "Select$" + e.Row.RowIndex);
+                e.Row.Attributes["style"] = "cursor:pointer";
+            }
+        }
+
+        protected void grdEmpresas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Response.Redirect("Empresa.aspx?FormType=2&id=" + grdEmpresas.SelectedRow.Cells[0].Text);
+        }
+
+        protected void btnNovaEmpresa_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Empresa.aspx?FormType=1");
         }
     }
 }

@@ -78,6 +78,7 @@
     <Content Include="css\styles.css" />
     <Content Include="css\util.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Empresa.aspx" />
     <Content Include="Empresas.aspx" />
     <Content Include="img\bg-01.jpg" />
     <Content Include="js\bootstrap.bundle.js" />
@@ -110,6 +111,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Empresa.aspx.cs">
+      <DependentUpon>Empresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Empresa.aspx.designer.cs">
+      <DependentUpon>Empresa.aspx</DependentUpon>
     </Compile>
     <Compile Include="Empresas.aspx.cs">
       <DependentUpon>Empresas.aspx</DependentUpon>

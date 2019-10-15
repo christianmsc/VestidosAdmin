@@ -14,6 +14,8 @@ namespace cDados
 
         #endregion
 
+        #region ATRIBUTOS
+
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Cnpj { get; set; }
@@ -25,12 +27,20 @@ namespace cDados
         public int IdLogradouro { get; set; }
         public int? IdPlano { get; set; }
 
+        #endregion
+
+        #region CONSTRUTOR
+
         public cEmpresa()
         {
             var connString = System.Configuration.ConfigurationManager.ConnectionStrings["vestidos_para_alugarConnectionString"].ConnectionString;
             connection = new SqlConnection();
             connection.ConnectionString = connString.ToString();
         }
+
+        #endregion
+
+        #region LISTAR
 
         public List<cEmpresa> Listar(string condicao = null)
         {
@@ -73,6 +83,10 @@ namespace cDados
             return empresas;
         }
 
+        #endregion
+
+        #region ABRIR
+
         public cEmpresa Abrir(int id, string condicao = null)
         {
             cEmpresa empresa;
@@ -98,7 +112,7 @@ namespace cDados
                         Login = registro["login"].ToString(),
                         Senha = registro["senha"].ToString(),
                         IdLogradouro = Convert.ToInt32(registro["idLogradouro"].ToString()),
-                        IdPlano = Convert.ToInt32(registro["idPlano"].ToString())
+                        IdPlano = registro["idPlano"] != System.DBNull.Value ? (int?)Convert.ToInt32(registro["idPlano"]) : null
                     };
                 }
             }
@@ -114,11 +128,16 @@ namespace cDados
             return empresa;
         }
 
+        #endregion
+
+        #region INSERIR
+
         public cEmpresa Inserir(cEmpresa obj)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "INSERT INTO " + TABELA + "(nome,cnpj,telefone,email,foto,login,senha,idLogradouro,idPlano) VALUES (@nome,@cnpj,@telefone,@email,@foto,@login,@senha,@idLogradouro,@idPlano);select @@IDENTITY;";
+            cmd.CommandText = "INSERT INTO " + TABELA + "(id,nome,cnpj,telefone,email,foto,login,senha,idLogradouro,idPlano) VALUES (@id,@nome,@cnpj,@telefone,@email,@foto,@login,@senha,@idLogradouro,@idPlano)";
+            cmd.Parameters.AddWithValue("id", obj.Id);
             cmd.Parameters.AddWithValue("nome", obj.Nome);
             cmd.Parameters.AddWithValue("cnpj", obj.Cnpj);
             cmd.Parameters.AddWithValue("telefone", obj.Telefone);
@@ -132,7 +151,7 @@ namespace cDados
             try
             {
                 connection.Open();
-                obj.Id = Convert.ToInt32(cmd.ExecuteScalar());
+                cmd.ExecuteScalar();
             }
             catch (Exception erro)
             {
@@ -145,6 +164,10 @@ namespace cDados
 
             return obj;
         }
+
+        #endregion
+
+        #region ALTERAR
 
         public void Alterar(cEmpresa obj)
         {
@@ -177,6 +200,10 @@ namespace cDados
             }
         }
 
+        #endregion
+
+        #region EXCLUIR
+
         public void Excluir(int cod)
         {
             SqlCommand cmd = new SqlCommand();
@@ -198,6 +225,10 @@ namespace cDados
             }
         }
 
+        #endregion
+
+        #region OUTROS
+
         public int? Logar(string email, string senha)
         {
             var connString = System.Configuration.ConfigurationManager.ConnectionStrings["vestidos_para_alugarConnectionString"].ConnectionString;
@@ -217,5 +248,7 @@ namespace cDados
             con.Close();
             return idUsuario;
         }
+
+        #endregion
     }
 }
