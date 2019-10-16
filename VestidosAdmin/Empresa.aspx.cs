@@ -15,7 +15,6 @@ namespace VestidosAdmin
         public cLogradouro objLogradouro = new cLogradouro();
         public cFoto objFoto = new cFoto();
 
-        public bool temFoto;
         public int FormType;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -25,16 +24,25 @@ namespace VestidosAdmin
             if (FormType == 2)
             {
                 objEmpresa = objEmpresa.Abrir(Convert.ToInt32(Request.QueryString["id"]));
-                if (objEmpresa != null)
+                objLogradouro = objLogradouro.Abrir(objEmpresa.IdLogradouro);
+                if (objEmpresa.IdFoto != null)
                 {
-                    txbNome.Text = objEmpresa.Nome;
-                    txbCnpj.Text = objEmpresa.Cnpj;
-                    txbTelefone.Text = objEmpresa.Telefone;
-                    txbEmail.Text = objEmpresa.Email;
-                    txbLogin.Text = objEmpresa.Login;
-                    txbSenha.Text = objEmpresa.Senha;
+                    objFoto = objFoto.Abrir((int)objEmpresa.IdFoto);
+                }
 
-                    objLogradouro = objLogradouro.Abrir(objEmpresa.IdLogradouro);
+                if (!IsPostBack)
+                {
+                    if (objEmpresa != null)
+                    {
+                        txbNome.Text = objEmpresa.Nome;
+                        txbCnpj.Text = objEmpresa.Cnpj;
+                        txbTelefone.Text = objEmpresa.Telefone;
+                        txbEmail.Text = objEmpresa.Email;
+                        txbLogin.Text = objEmpresa.Login;
+                        txbSenha.Text = objEmpresa.Senha;
+
+                    }
+
                     if (objLogradouro != null)
                     {
                         txbRua.Text = objLogradouro.Rua;
@@ -46,71 +54,73 @@ namespace VestidosAdmin
                         txbCep.Text = objLogradouro.Cep;
                     }
 
-                    if (objEmpresa.IdFoto != null)
-                    {
-                        objFoto = objFoto.Abrir((int)objEmpresa.IdFoto);
-                    }
-
+                    DataBind();
                 }
-
             }
-
-            DataBind();
         }
 
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
-            cEmpresa empresa = new cEmpresa();
-            cFoto foto = new cFoto();
-            cLogradouro logradouro = new cLogradouro();
-
             try
             {
-                empresa.Nome = txbNome.Text;
-                empresa.Cnpj = txbCnpj.Text;
-                empresa.Telefone = txbTelefone.Text;
-                empresa.Email = txbEmail.Text;
-                empresa.Login = txbLogin.Text;
-                empresa.Senha = txbSenha.Text;
-                empresa.IdPlano = objEmpresa.IdPlano;
+                objEmpresa.Nome = txbNome.Text;
+                objEmpresa.Cnpj = txbCnpj.Text;
+                objEmpresa.Telefone = txbTelefone.Text;
+                objEmpresa.Email = txbEmail.Text;
+                objEmpresa.Login = txbLogin.Text;
+                objEmpresa.Senha = txbSenha.Text;
 
-                logradouro.Rua = txbRua.Text;
-                logradouro.Numero = txbNumero.Text;
-                logradouro.Complemento = txbComplemento.Text;
-                logradouro.Bairro = txbBairro.Text;
-                logradouro.Cidade = txbCidade.Text;
-                logradouro.Estado = txbEstado.Text;
-                logradouro.Cep = txbCep.Text;
+                objLogradouro.Rua = txbRua.Text;
+                objLogradouro.Numero = txbNumero.Text;
+                objLogradouro.Complemento = txbComplemento.Text;
+                objLogradouro.Bairro = txbBairro.Text;
+                objLogradouro.Cidade = txbCidade.Text;
+                objLogradouro.Estado = txbEstado.Text;
+                objLogradouro.Cep = txbCep.Text;
+
+                if (fuFoto.PostedFile.FileName != String.Empty)
+                {
+                    objFoto.Nome = DateTime.Now.Ticks.ToString() + "-" + fuFoto.PostedFile.FileName;
+                }
 
                 if (FormType == 1)
                 {
-                    logradouro = logradouro.Inserir(logradouro);
-                    empresa.IdLogradouro = logradouro.Id;
-                    empresa.IdFoto = fuFoto.PostedFile.FileName != String.Empty ? (int?)foto.Inserir(foto = new cFoto() { Nome = DateTime.Now.Ticks.ToString() + fuFoto.FileName }).Id : null;
-                    if (empresa.IdFoto != null)
+                    objLogradouro = objLogradouro.Inserir(objLogradouro);
+                    objEmpresa.IdLogradouro = objLogradouro.Id;
+
+                    if (objFoto.Nome != null && objFoto.Nome != String.Empty)
                     {
-                        fuFoto.PostedFile.SaveAs(Server.MapPath(@"fotos/") + foto.Nome);
+                        objFoto = objFoto.Inserir(objFoto);
+                        objEmpresa.IdFoto = objFoto.Id;
+                        fuFoto.PostedFile.SaveAs(Server.MapPath(@"fotos/") + objFoto.Nome);
                     }
-                    empresa.Inserir(empresa);
+
+                    objEmpresa.Inserir(objEmpresa);
+
+                    Response.Write("<script>alert('Empresa cadastrada com sucesso!');</script>");
                 }
                 else if (FormType == 2)
                 {
-                    empresa.Id = objEmpresa.Id;
-                    empresa.IdLogradouro = logradouro.Id = objLogradouro.Id;
-                    empresa.IdFoto = fuFoto.PostedFile.FileName != String.Empty ? (int?)foto.Inserir(foto = new cFoto() { Nome = DateTime.Now.Ticks.ToString() + fuFoto.FileName }).Id : null;
+                    objLogradouro.Alterar(objLogradouro);
 
-                    if (empresa.IdFoto != null)
+                    if (objFoto.Id > 0)
                     {
-                        fuFoto.PostedFile.SaveAs(Server.MapPath(@"fotos/") + foto.Nome);
-
-                        if (objFoto.Id > 0)
+                        objFoto.Alterar(objFoto);
+                        if (fuFoto.PostedFile.FileName != String.Empty)
                         {
-                            foto.Excluir(objFoto.Id);
-                            File.Delete(Server.MapPath(@"fotos/") + objFoto.Nome);
+                            fuFoto.PostedFile.SaveAs(Server.MapPath(@"fotos/") + objFoto.Nome);
                         }
                     }
-                    logradouro.Alterar(logradouro);
-                    empresa.Alterar(empresa);
+                    else if (objFoto.Nome != null && objFoto.Nome != String.Empty)
+                    {
+                        objFoto = objFoto.Inserir(objFoto);
+                        objEmpresa.IdFoto = objFoto.Id;
+                        fuFoto.PostedFile.SaveAs(Server.MapPath(@"fotos/") + objFoto.Nome);
+                    }
+
+                    objEmpresa.Alterar(objEmpresa);
+
+                    Response.Write("<script>alert('Empresa atualizada com sucesso!');</script>");
                 }
 
                 Response.Redirect("Empresas.aspx");
@@ -118,7 +128,7 @@ namespace VestidosAdmin
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "')</script>");
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
     }
