@@ -136,17 +136,16 @@ namespace cDados
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "INSERT INTO " + TABELA + "(id,nome,cnpj,telefone,email,idFoto,login,senha,idLogradouro,idPlano) VALUES (@id,@nome,@cnpj,@telefone,@email,@idFoto,@login,@senha,@idLogradouro,@idPlano)";
-            cmd.Parameters.AddWithValue("id", obj.Id);
+            cmd.CommandText = "INSERT INTO " + TABELA + "(nome,cnpj,telefone,email,idFoto,login,senha,idLogradouro,idPlano) VALUES (@nome,@cnpj,@telefone,@email,@idFoto,@login,@senha,@idLogradouro,@idPlano)";
             cmd.Parameters.AddWithValue("nome", obj.Nome);
             cmd.Parameters.AddWithValue("cnpj", obj.Cnpj);
-            cmd.Parameters.AddWithValue("telefone", obj.Telefone);
-            cmd.Parameters.AddWithValue("email", obj.Email);
-            cmd.Parameters.AddWithValue("idFoto", obj.IdFoto);
+            cmd.Parameters.AddWithValue("telefone", (object)obj.Telefone ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("email", (object)obj.Email ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("idFoto", (object)obj.IdFoto ?? DBNull.Value);
             cmd.Parameters.AddWithValue("login", obj.Login);
             cmd.Parameters.AddWithValue("senha", obj.Senha);
             cmd.Parameters.AddWithValue("idLogradouro", obj.IdLogradouro);
-            cmd.Parameters.AddWithValue("idPlano", obj.IdPlano);
+            cmd.Parameters.AddWithValue("idPlano", (object)obj.IdPlano ?? DBNull.Value);
 
             try
             {
@@ -174,16 +173,16 @@ namespace cDados
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = "UPDATE " + TABELA + " SET nome=@nome,cnpj=@cnpj,telefone=@telefone,email=@email,idFoto=@idFoto,login=@login,senha=@senha,idLogradouro=@idLogradouro,idPlano=@idPlano WHERE id = @id;";
-            cmd.Parameters.AddWithValue("id", obj.Nome);
+            cmd.Parameters.AddWithValue("id", obj.Id);
             cmd.Parameters.AddWithValue("nome", obj.Nome);
             cmd.Parameters.AddWithValue("cnpj", obj.Cnpj);
-            cmd.Parameters.AddWithValue("telefone", obj.Telefone);
-            cmd.Parameters.AddWithValue("email", obj.Email);
-            cmd.Parameters.AddWithValue("idFoto", obj.IdFoto);
+            cmd.Parameters.AddWithValue("telefone", (object)obj.Telefone ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("email", (object)obj.Email ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("idFoto", (object)obj.IdFoto ?? DBNull.Value);
             cmd.Parameters.AddWithValue("login", obj.Login);
             cmd.Parameters.AddWithValue("senha", obj.Senha);
             cmd.Parameters.AddWithValue("idLogradouro", obj.IdLogradouro);
-            cmd.Parameters.AddWithValue("idPlano", obj.IdPlano);
+            cmd.Parameters.AddWithValue("idPlano", (object)obj.IdPlano ?? DBNull.Value);
 
             try
             { 
