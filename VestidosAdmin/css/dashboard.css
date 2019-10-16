@@ -113,7 +113,6 @@ body {
     background: -o-linear-gradient(bottom, #e8519e, #c77ff2);
     background: -moz-linear-gradient(bottom, #e8519e, #c77ff2);
     background: linear-gradient(bottom, #e8519e, #c77ff2);
-    opacity: 0.8;
 }
 
 .navbar-brand {
