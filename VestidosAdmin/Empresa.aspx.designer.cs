@@ -13,6 +13,15 @@ namespace VestidosAdmin {
     public partial class Empresa {
         
         /// <summary>
+        /// fuFoto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fuFoto;
+        
+        /// <summary>
         /// txbNome control.
         /// </summary>
         /// <remarks>
@@ -40,13 +49,13 @@ namespace VestidosAdmin {
         protected global::System.Web.UI.WebControls.TextBox txbTelefone;
         
         /// <summary>
-        /// txbEmail control.
+        /// txbEmailEmpresa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbEmail;
+        protected global::System.Web.UI.WebControls.TextBox txbEmailEmpresa;
         
         /// <summary>
         /// txbLogin control.
@@ -58,22 +67,13 @@ namespace VestidosAdmin {
         protected global::System.Web.UI.WebControls.TextBox txbLogin;
         
         /// <summary>
-        /// txbSenha control.
+        /// txbSenhaEmpresa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbSenha;
-        
-        /// <summary>
-        /// fuFoto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fuFoto;
+        protected global::System.Web.UI.WebControls.TextBox txbSenhaEmpresa;
         
         /// <summary>
         /// txbRua control.

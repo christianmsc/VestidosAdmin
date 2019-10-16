@@ -37,9 +37,9 @@ namespace VestidosAdmin
                         txbNome.Text = objEmpresa.Nome;
                         txbCnpj.Text = objEmpresa.Cnpj;
                         txbTelefone.Text = objEmpresa.Telefone;
-                        txbEmail.Text = objEmpresa.Email;
+                        txbEmailEmpresa.Text = objEmpresa.Email;
                         txbLogin.Text = objEmpresa.Login;
-                        txbSenha.Text = objEmpresa.Senha;
+                        txbSenhaEmpresa.Text = objEmpresa.Senha;
 
                     }
 
@@ -53,10 +53,10 @@ namespace VestidosAdmin
                         txbEstado.Text = objLogradouro.Estado;
                         txbCep.Text = objLogradouro.Cep;
                     }
-
-                    DataBind();
                 }
             }
+
+            DataBind();
         }
 
         protected void btnSalvar_Click(object sender, EventArgs e)
@@ -66,9 +66,9 @@ namespace VestidosAdmin
                 objEmpresa.Nome = txbNome.Text;
                 objEmpresa.Cnpj = txbCnpj.Text;
                 objEmpresa.Telefone = txbTelefone.Text;
-                objEmpresa.Email = txbEmail.Text;
+                objEmpresa.Email = txbEmailEmpresa.Text;
                 objEmpresa.Login = txbLogin.Text;
-                objEmpresa.Senha = txbSenha.Text;
+                objEmpresa.Senha = txbSenhaEmpresa.Text;
 
                 objLogradouro.Rua = txbRua.Text;
                 objLogradouro.Numero = txbNumero.Text;

@@ -138,3 +138,12 @@ body {
 .sidebar .nav-link.active {
     color: #e8519e;
 }
+
+#imgLink {
+    color: deepskyblue;
+}
+
+#imgLink:hover {
+    cursor: pointer;
+    color: blueviolet;
+}

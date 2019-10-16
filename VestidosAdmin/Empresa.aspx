@@ -11,43 +11,48 @@
         </div>
     </div>
     <div class="h6">Dados da Empresa</div>
-    <div class="form-row bg-light border rounded px-3 pt-3">
-    <div class="col-md-4 mb-3">
-      <label for="txbNome">Nome</label>
-      <asp:TextBox runat="server" type="text" CssClass="form-control" id="txbNome" placeholder="Nome fantasia" required />
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="txbCnpj">CNPJ</label>
-      <asp:TextBox runat="server" type="text" class="form-control" id="txbCnpj" placeholder="CNPJ" required />
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="txbTelefone">Telefone</label>
-      <asp:TextBox runat="server" type="text" class="form-control" id="txbTelefone" placeholder="Telefone" required />
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="txbEmail">E-mail</label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroupPrepend2">@</span>
+    <div class="row bg-light border rounded px-3 pt-3">
+        <div class="col-md-2 d-flex align-items-center justify-content-center">
+             <div class="form-group text-center">
+                <asp:Image ImageUrl=<%# "fotos/" + objFoto.Nome %>  Visible=<%# objEmpresa.IdFoto != null %> width="100px" height="100px" class="d-inline-block rounded-circle mr-1" runat="server"/>
+                <asp:Image ImageUrl="fotos/User_icon_BLACK-01.png" class="d-inline-block rounded-circle mr-1" Visible=<%# objEmpresa.IdFoto == null %> width="100px" height="100px" runat="server"/>
+                <asp:FileUpload runat="server" CssClass="form-control-file" ID="fuFoto" accept="image/png, image/jpeg" style="display:none"/>
+                <div><label for="fuFoto" id="imgLink" onclick="document.getElementById('ContentPlaceHolder1_fuFoto').click();">Nova Imagem...</label></div>
+            </div>
         </div>
-        <asp:TextBox runat="server" type="text" class="form-control" id="txbEmail" placeholder="E-mail" aria-describedby="inputGroupPrepend2" required />
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="txbLogin">Login</label>
-      <asp:TextBox runat="server" type="text" class="form-control" id="txbLogin" placeholder="Login" required />
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="txbSenha">Senha</label>
-      <asp:TextBox runat="server" type="password" class="form-control" id="txbSenha" placeholder="Senha" required />
-    </div>
-    <div class="col-md-12 mb-3">
-        <div class="form-group">
-            <label for="exampleFormControlFile1">Foto</label>
-            <asp:Image ImageUrl=<%# "fotos/" + objFoto.Nome %>  Visible=<%# objEmpresa.IdFoto != null %> runat="server"/>
-            <asp:FileUpload runat="server" CssClass="form-control-file" ID="fuFoto" accept="image/png, image/jpeg"/>
+        <div class="col-md-10">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label for="txbNome">Nome</label>
+                  <asp:TextBox runat="server" type="text" CssClass="form-control" id="txbNome" placeholder="Nome fantasia" required />
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="txbCnpj">CNPJ</label>
+                  <asp:TextBox runat="server" type="text" class="form-control" id="txbCnpj" placeholder="CNPJ" required />
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="txbTelefone">Telefone</label>
+                  <asp:TextBox runat="server" type="text" class="form-control" id="txbTelefone" placeholder="Telefone" />
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="txbEmailEmpresa">E-mail</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                    </div>
+                    <asp:TextBox runat="server" type="text" class="form-control" id="txbEmailEmpresa" placeholder="E-mail" aria-describedby="inputGroupPrepend2" />
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="txbLogin">Login</label>
+                  <asp:TextBox runat="server" type="text" class="form-control" id="txbLogin" placeholder="Login" required />
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="txbSenhaEmpresa">Senha</label>
+                  <asp:TextBox runat="server" type="password" class="form-control" id="txbSenhaEmpresa" placeholder="Senha" required />
+                </div>
+            </div>
         </div>
-    </div>
   </div>
     
   <div class="h6 pt-5">Endereço</div>  
