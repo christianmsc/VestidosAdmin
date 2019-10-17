@@ -22,6 +22,12 @@ namespace VestidosAdmin
 
         protected void gvVestidos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(gvVestidos, "Select$" + e.Row.RowIndex);
+                e.Row.Attributes["style"] = "cursor:pointer";
+            }
+
             if (e.Row.RowType == DataControlRowType.Header)
             {
                 e.Row.Cells[1].Text = "Dono";
@@ -30,6 +36,11 @@ namespace VestidosAdmin
                 e.Row.Cells[7].Text = "Relevância";
                 e.Row.Cells[8].Text = "Notificação";
             }
+        }
+
+        protected void gvVestidos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Response.Redirect("Vestido.aspx?id=" + gvVestidos.SelectedRow.Cells[0].Text);
         }
     }
 }

@@ -93,6 +93,7 @@
     <Content Include="js\popper.min.js" />
     <Content Include="Login.aspx" />
     <Content Include="Planos.aspx" />
+    <Content Include="Vestido.aspx" />
     <Content Include="Usuario.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Vestidos.aspx" />
@@ -149,6 +150,13 @@
       <DependentUpon>Principal.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vestido.aspx.cs">
+      <DependentUpon>Vestido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vestido.aspx.designer.cs">
+      <DependentUpon>Vestido.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Usuario.aspx.cs">
       <DependentUpon>Usuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
