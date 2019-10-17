@@ -67,13 +67,7 @@
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
                             <asp:Button ID="btnEntrar" CssClass="login100-form-btn btn-asp" Text="entrar" runat="server" OnClick="btnEntrar_Click"></asp:Button>
-							<%--<button class="login100-form-btn">entrar</button>--%>
 						</div>
-                        <div class="pt-4">
-						    <a href="#" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
-							    esqueci minha senha =(
-						    </a>
-                        </div>
 					</div>
 
 				</form>

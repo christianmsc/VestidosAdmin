@@ -44,25 +44,46 @@
                 </li>
               </ul>
             </nav>--%>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top navbar-vestido">
+            <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top navbar-vestido flex-md-nowrap p-0">
               <a class="navbar-brand col-2 mr-0 text-white"href="Default.aspx">amei seu vestido!</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(Página atual)</span></a>
+              <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav text-center">
+                  <li class="nav-item">
+                    <asp:HyperLink NavigateUrl="~/Default.aspx" runat="server" CssClass="nav-link text-white" >
+                        <span data-feather="home"></span> Principal <span class="sr-only">(current)</span>
+                    </asp:HyperLink>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Destaques</a>
+                    <asp:HyperLink NavigateUrl="~/Usuarios.aspx" runat="server" CssClass="nav-link text-white" >
+                        <span data-feather="users"></span> Usuários
+                    </asp:HyperLink>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Preços</a>
+                    <asp:HyperLink NavigateUrl="~/Vestidos.aspx" runat="server" CssClass="nav-link text-white" >
+                        <span data-feather="list"></span> Vestidos
+                    </asp:HyperLink>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Desativado</a>
+                    <asp:HyperLink NavigateUrl="~/Alugueis.aspx" runat="server" CssClass="nav-link text-white" >
+                        <span data-feather="dollar-sign"></span> Aluguéis
+                    </asp:HyperLink>
                   </li>
+                <li class="nav-item">
+                    <asp:HyperLink NavigateUrl="~/Empresas.aspx" runat="server" CssClass="nav-link text-white" >
+                        <span data-feather="briefcase"></span> Empresas
+                    </asp:HyperLink>
+                </li>
+                <li class="nav-item">
+                    <asp:HyperLink NavigateUrl="~/Planos.aspx" runat="server" CssClass="nav-link text-white" >
+                        <span data-feather="credit-card"></span> Planos
+                    </asp:HyperLink>
+                </li>
+                <li class="nav-item text-nowrap">
+                    <asp:Button ID="btnSair" Text="Sair" CssClass="btn btn-vestido px-3" runat="server" OnClick="btnSair_Click" />
+                </li>
                 </ul>
               </div>
             </nav>
@@ -77,30 +98,35 @@
                         </asp:HyperLink>
                       </li>
                       <li class="nav-item">
-                        <asp:HyperLink NavigateUrl="~/Usuarios.aspx" runat="server" CssClass="nav-link" >
+                        <asp:HyperLink NavigateUrl="~/Usuarios.aspx" runat="server" CssClass="nav-link active" >
                            <span data-feather="users"></span> Usuários
                         </asp:HyperLink>
                       </li>
                       <li class="nav-item">
-                        <asp:HyperLink NavigateUrl="~/Vestidos.aspx" runat="server" CssClass="nav-link" >
+                        <asp:HyperLink NavigateUrl="~/Vestidos.aspx" runat="server" CssClass="nav-link active" >
                            <span data-feather="list"></span> Vestidos
                         </asp:HyperLink>
                       </li>
                       <li class="nav-item">
-                        <asp:HyperLink NavigateUrl="~/Alugueis.aspx" runat="server" CssClass="nav-link" >
+                        <asp:HyperLink NavigateUrl="~/Alugueis.aspx" runat="server" CssClass="nav-link active" >
                            <span data-feather="dollar-sign"></span> Aluguéis
                         </asp:HyperLink>
                       </li>
                       <li class="nav-item">
-                        <asp:HyperLink NavigateUrl="~/Empresas.aspx" runat="server" CssClass="nav-link" >
+                        <asp:HyperLink NavigateUrl="~/Empresas.aspx" runat="server" CssClass="nav-link active" >
                            <span data-feather="briefcase"></span> Empresas
                         </asp:HyperLink>
                       </li>
                       <li class="nav-item">
-                        <asp:HyperLink NavigateUrl="~/Planos.aspx" runat="server" CssClass="nav-link" >
+                        <asp:HyperLink NavigateUrl="~/Planos.aspx" runat="server" CssClass="nav-link active" >
                            <span data-feather="credit-card"></span> Planos
                         </asp:HyperLink>
                       </li>
+                        <li class="nav-item">
+                            <asp:HyperLink runat="server" CssClass="nav-link active" NavigateUrl="~/Default.aspx?logout=true"  >
+                                <span data-feather="log-out"></span> Sair
+                            </asp:HyperLink>
+                        </li>
                     </ul>
                   </div>
                 </nav>

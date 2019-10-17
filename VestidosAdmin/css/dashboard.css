@@ -146,3 +146,17 @@ body {
     cursor: pointer;
     color: blueviolet;
 }
+
+@media (min-width: 768px) {
+    .navbar-expand-md .navbar-collapse {
+        display: none !important;
+    }
+}
+
+.btn-primary, .btn-dark {
+    border: none;  
+    background: -webkit-linear-gradient(bottom, #e8519e, #c77ff2);
+    background: -o-linear-gradient(bottom, #e8519e, #c77ff2);
+    background: -moz-linear-gradient(bottom, #e8519e, #c77ff2);
+    background: linear-gradient(bottom, #e8519e, #c77ff2);
+}

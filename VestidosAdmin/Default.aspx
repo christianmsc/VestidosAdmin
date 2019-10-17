@@ -8,7 +8,7 @@
         <h1 class="h2">Receitas x Despesas</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>
+                <button type="button" class="btn btn-sm btn-primary">Exportar</button>
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
 
     <h2>Últimos Planos</h2>
     <div class="table-responsive">
-        <table class="table table-striped table-sm">
+        <table class="table">
             <thead>
             <tr>
                 <th>#</th>

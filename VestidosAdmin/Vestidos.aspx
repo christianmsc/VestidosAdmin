@@ -5,6 +5,8 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Vestidos</h1>
     </div>
-    <asp:GridView ID="gvVestidos" runat="server" CssClass="table table-striped" GridLines="None" OnRowDataBound="gvVestidos_RowDataBound">
-    </asp:GridView>
+    <div class="table-responsive">
+        <asp:GridView ID="gvVestidos" runat="server" CssClass="table" GridLines="None" OnRowDataBound="gvVestidos_RowDataBound">
+        </asp:GridView>
+    </div>
 </asp:Content>

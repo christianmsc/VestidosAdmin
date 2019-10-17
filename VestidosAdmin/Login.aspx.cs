@@ -18,6 +18,11 @@ namespace VestidosAdmin
             {
                 Response.Redirect("Default.aspx");
             }
+            else if (Request.Cookies["idUsuario"] != null)
+            {
+                Session["idUsuario"] = Request.Cookies["idUsuario"].Value;
+                Response.Redirect("Default.aspx");
+            }
         }
 
         protected void btnEntrar_Click(object sender, EventArgs e)
@@ -25,9 +30,17 @@ namespace VestidosAdmin
             int? idUsuario = usuario.Logar(txbEmail.Text, txbSenha.Text);
             if (idUsuario != null)
             {
+               
                 Session["idUsuario"] = idUsuario;
-                Session.Timeout = 1440;
+                Session.Timeout = 1;
+
+                if (ckb1.Checked)
+                {
+                    Response.Cookies.Add(new HttpCookie("idUsuario", idUsuario.ToString()));
+                }
+
                 Response.Redirect("Default.aspx");
+
             }
             else
             {

@@ -6,7 +6,9 @@
         <h1 class="h2">Empresas</h1>
         <asp:Button ID="btnNovaEmpresa" Text="Nova Empresa" runat="server" CssClass="btn btn-primary float-right" OnClick="btnNovaEmpresa_Click"/>
     </div>
-    <asp:GridView ID="grdEmpresas" runat="server" CssClass="table table-striped" GridLines="None" OnRowDataBound="grdEmpresas_RowDataBound"
-          OnSelectedIndexChanged="grdEmpresas_SelectedIndexChanged">
-    </asp:GridView>
+    <div class="table-responsive">
+        <asp:GridView ID="grdEmpresas" runat="server" CssClass="table" GridLines="None" OnRowDataBound="grdEmpresas_RowDataBound"
+              OnSelectedIndexChanged="grdEmpresas_SelectedIndexChanged">
+        </asp:GridView>
+    </div>
 </asp:Content>

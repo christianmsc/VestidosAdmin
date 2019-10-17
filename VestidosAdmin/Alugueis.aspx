@@ -6,6 +6,8 @@
         <h1 class="h2">Aluguéis</h1>
     </div>
     <asp:Label ID="lblSemRegistro" Text="Não há aluguéis a serem mostrados" runat="server" CssClass="h6 text-secondary d-flex justify-content-center" Visible="false"/>
-    <asp:GridView ID="gvAlugueis" runat="server" CssClass="table table-striped" GridLines="None" Visible="false" OnRowDataBound="gvAlugueis_RowDataBound">
-    </asp:GridView>
+    <div class="table-responsive">
+        <asp:GridView ID="gvAlugueis" runat="server" CssClass="table" GridLines="None" Visible="false" OnRowDataBound="gvAlugueis_RowDataBound">
+        </asp:GridView>
+    </div>
 </asp:Content>
