@@ -78,6 +78,9 @@
   <ItemGroup>
     <Content Include="Login.ashx" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\ameiseuvestido2 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\ameiseuvestido2 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
