@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 
@@ -67,7 +68,7 @@ namespace cDados
                         Login = registro["login"].ToString(),
                         Senha = registro["senha"].ToString(),
                         IdLogradouro = Convert.ToInt32(registro["idLogradouro"].ToString()),
-                        IdPlano = registro["idPlano"] != System.DBNull.Value ? (int?) Convert.ToInt32(registro["idPlano"]) : null
+                        IdPlano = registro["idPlano"] != System.DBNull.Value ? (int?)Convert.ToInt32(registro["idPlano"]) : null
                     });
                 }
             }
@@ -78,6 +79,30 @@ namespace cDados
             finally
             {
                 connection.Close();
+            }
+
+            return empresas;
+        }
+
+        public DataTable ListarComPlanos(int? qtd = null)
+        {
+            DataTable empresas;
+            string sql = qtd != null && qtd > 0 
+                        ? "SELECT TOP " + qtd.ToString() + " e.nome as Empresa, p.nome as Plano, p.valor as Valor FROM empresa e " +
+                                "INNER JOIN plano p ON e.idPlano = p.id " +
+                                "ORDER BY e.id DESC"
+                        : "SELECT e.nome as Empresa, p.nome as Plano, p.valor as Valor FROM empresa e " +
+                                "INNER JOIN plano p ON e.idPlano = p.id " +
+                                "ORDER BY e.id DESC";
+            SqlDataAdapter da = new SqlDataAdapter(sql, connection.ConnectionString);
+            try
+            {
+                empresas = new DataTable();
+                da.Fill(empresas);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
 
             return empresas;
@@ -185,7 +210,7 @@ namespace cDados
             cmd.Parameters.AddWithValue("idPlano", (object)obj.IdPlano ?? DBNull.Value);
 
             try
-            { 
+            {
                 connection.Open();
                 cmd.ExecuteNonQuery();
             }
