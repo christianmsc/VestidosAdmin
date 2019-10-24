@@ -48,6 +48,37 @@ namespace cDados
             return vestidos;
         }
 
+        public List<cVestido> ListarPaginacao(string offset, string results, string condicao = null)
+        {
+            var connString = System.Configuration.ConfigurationManager.ConnectionStrings["vestidos_para_alugarConnectionString"].ConnectionString;
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = connString.ToString();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = condicao == null ? $"SELECT * FROM vestido ORDER BY id OFFSET {offset} ROWS FETCH NEXT {results} ROWS ONLY;" : $"SELECT * FROM vestido WHERE {condicao} ORDER BY id OFFSET {offset} ROWS FETCH NEXT {results} ROWS ONLY;";
+            con.Open();
+            SqlDataReader registro = cmd.ExecuteReader();
+            List<cVestido> vestidos = new List<cVestido>();
+            while (registro.Read())
+            {
+                vestidos.Add(new cVestido()
+                {
+                    Id = Convert.ToInt32(registro["id"]),
+                    IdEmpresa = Convert.ToInt32(registro["idEmpresa"]),
+                    IdUsuario = registro["idUsuario"] != System.DBNull.Value ? (int?)Convert.ToInt32(registro["idUsuario"]) : null,
+                    Nome = registro["nome"].ToString(),
+                    Tamanho = registro["tamanho"].ToString(),
+                    Descricao = registro["descricao"].ToString(),
+                    Preco = float.Parse(registro["preco"].ToString()),
+                    Fotos = registro["fotos"].ToString(),
+                    Relevancia = registro["relevancia"] != System.DBNull.Value ? (bool?)Boolean.Parse(registro["relevancia"].ToString()) : null,
+                    Notificacao = registro["notificacao"] != System.DBNull.Value ? (bool?)Boolean.Parse(registro["notificacao"].ToString()) : null
+                });
+            }
+            con.Close();
+            return vestidos;
+        }
+
         public cVestido Abrir(int id, string condicao = null)
         {
             var connString = System.Configuration.ConfigurationManager.ConnectionStrings["vestidos_para_alugarConnectionString"].ConnectionString;

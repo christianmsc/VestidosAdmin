@@ -27,6 +27,8 @@ namespace api
             List<VestidosResposta> vestidosResposta = null;
 
             string idVestido = context.Request.Params["id"];
+            string offset = context.Request.Params["offset"];
+            string results = context.Request.Params["results"];
 
             try
             {
@@ -64,7 +66,14 @@ namespace api
                 }
                 else
                 {
-                    vestidos = objVestido.Listar();
+                    if(offset != null && results != null)
+                    {
+                        vestidos = objVestido.ListarPaginacao(offset, results);
+                    }
+                    else
+                    {
+                        vestidos = objVestido.Listar();
+                    }
 
                     if (vestidos == null)
                     {
