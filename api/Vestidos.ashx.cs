@@ -53,6 +53,40 @@ namespace api
                         }
                     }
 
+                    // recuperar a empresa vinculada ao vestido
+                    cEmpresa empresa = new cEmpresa().Abrir(objVestido.IdEmpresa);
+
+                    // recuperar a foto da empresa, se houver
+                    string fotoEmpresa = null;
+                    if (empresa.IdFoto != null) {
+                        cFoto objFotoEmpresa = new cFoto().Abrir((int)empresa.IdFoto);
+                        fotoEmpresa = productionUrl + "fotos/" + objFotoEmpresa.Nome;
+                    }
+
+                    // recuperar o endereco da empresa
+                    cLogradouro objLogradouroEmpresa = new cLogradouro().Abrir(empresa.IdLogradouro);
+                    string enderecoEmpresa = null;
+                    enderecoEmpresa += objLogradouroEmpresa.Rua;
+                    enderecoEmpresa += ", " + objLogradouroEmpresa.Numero;
+                    if (objLogradouroEmpresa.Complemento != null) enderecoEmpresa += " - " + objLogradouroEmpresa.Complemento;
+                    enderecoEmpresa += ", " + objLogradouroEmpresa.Cidade;
+                    enderecoEmpresa += ", " + objLogradouroEmpresa.Estado;
+
+                    // recuperar o usuario vinculado, caso exista
+                    cUsuario usuario = null;
+                    if(objVestido.IdUsuario != null)
+                    {
+                        usuario = new cUsuario().Abrir((int)objVestido.IdUsuario);
+                    }
+
+                    // recuperar a foto do usuario, se houver
+                    string fotoUsuario = null;
+                    if (usuario.IdFoto != null)
+                    {
+                        cFoto objFotoUsuario = new cFoto().Abrir((int)usuario.IdFoto);
+                        fotoUsuario = productionUrl + "fotos/" + objFotoUsuario.Nome;
+                    }
+
                     vestidoResposta = new VestidosResposta
                     {
                         id = objVestido.Id,
@@ -60,7 +94,12 @@ namespace api
                         descricao = objVestido.Descricao,
                         tamanho = objVestido.Tamanho,
                         preco = objVestido.Preco,
-                        fotos = urlFotos
+                        fotos = urlFotos,
+                        nomeEmpresa = empresa.Nome,
+                        fotoEmpresa = fotoEmpresa,
+                        enderecoEmpresa = enderecoEmpresa,
+                        nomeUsuario = !string.IsNullOrEmpty(usuario.Nome) ? usuario.Nome : null,
+                        fotoUsuario = fotoUsuario
                     };
 
                 }
