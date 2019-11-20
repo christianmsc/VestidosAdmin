@@ -58,7 +58,8 @@ namespace api
 
                     // recuperar a foto da empresa, se houver
                     string fotoEmpresa = null;
-                    if (empresa.IdFoto != null) {
+                    if (empresa.IdFoto != null)
+                    {
                         cFoto objFotoEmpresa = new cFoto().Abrir((int)empresa.IdFoto);
                         fotoEmpresa = productionUrl + "fotos/" + objFotoEmpresa.Nome;
                     }
@@ -72,20 +73,21 @@ namespace api
                     enderecoEmpresa += ", " + objLogradouroEmpresa.Cidade;
                     enderecoEmpresa += ", " + objLogradouroEmpresa.Estado;
 
-                    // recuperar o usuario vinculado, caso exista
+                    // recuperar o usuario vinculado e foto, caso existam
                     cUsuario usuario = null;
-                    if(objVestido.IdUsuario != null)
+                    string fotoUsuario = null;
+                    if (objVestido.IdUsuario != null)
                     {
                         usuario = new cUsuario().Abrir((int)objVestido.IdUsuario);
+
+                        // recuperar a foto do usuario, se houver
+                        if (usuario.IdFoto != null)
+                        {
+                            cFoto objFotoUsuario = new cFoto().Abrir((int)usuario.IdFoto);
+                            fotoUsuario = productionUrl + "fotos/" + objFotoUsuario.Nome;
+                        }
                     }
 
-                    // recuperar a foto do usuario, se houver
-                    string fotoUsuario = null;
-                    if (usuario.IdFoto != null)
-                    {
-                        cFoto objFotoUsuario = new cFoto().Abrir((int)usuario.IdFoto);
-                        fotoUsuario = productionUrl + "fotos/" + objFotoUsuario.Nome;
-                    }
 
                     vestidoResposta = new VestidosResposta
                     {
@@ -98,14 +100,14 @@ namespace api
                         nomeEmpresa = empresa.Nome,
                         fotoEmpresa = fotoEmpresa,
                         enderecoEmpresa = enderecoEmpresa,
-                        nomeUsuario = !string.IsNullOrEmpty(usuario.Nome) ? usuario.Nome : null,
+                        nomeUsuario = usuario != null ? usuario.Nome : null,
                         fotoUsuario = fotoUsuario
                     };
 
                 }
                 else
                 {
-                    if(offset != null && results != null)
+                    if (offset != null && results != null)
                     {
                         vestidos = objVestido.ListarPaginacao(offset, results);
                     }
