@@ -7,6 +7,12 @@ namespace cDados
 {
     public class cUsuario
     {
+        #region INFOS
+
+        private const string TABELA = "Usuario";
+
+        #endregion
+
         public int Id { get; set; }
         public string Nome { get; set; }
         public int IdLogradouro { get; set; }
@@ -76,6 +82,40 @@ namespace cDados
             }
             con.Close();
             return usuario;
+        }
+
+        public cUsuario Inserir(cUsuario obj)
+        {
+            var connString = System.Configuration.ConfigurationManager.ConnectionStrings["vestidos_para_alugarConnectionString"].ConnectionString;
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = connString.ToString();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "INSERT INTO " + TABELA + "(nome,idLogradouro,cpf,dataNascimento,telefone,idfoto,email,senha) VALUES (@nome,@idLogradouro,@cpf,@dataNascimento,@telefone,@idfoto,@email,@senha);select @@IDENTITY;";
+            cmd.Parameters.AddWithValue("nome", obj.Nome);
+            cmd.Parameters.AddWithValue("idLogradouro", obj.IdLogradouro);
+            cmd.Parameters.AddWithValue("cpf", obj.Cpf);
+            cmd.Parameters.AddWithValue("dataNascimento", obj.DataNascimento);
+            cmd.Parameters.AddWithValue("telefone", obj.Telefone);
+            cmd.Parameters.AddWithValue("idfoto", obj.IdFoto != null ? obj.IdFoto : 0);
+            cmd.Parameters.AddWithValue("email", obj.Email);
+            cmd.Parameters.AddWithValue("senha", obj.Senha);
+
+            try
+            {
+                con.Open();
+                obj.Id = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch (Exception erro)
+            {
+                throw new Exception(erro.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return obj;
         }
 
         public int? Logar(string email, string senha)

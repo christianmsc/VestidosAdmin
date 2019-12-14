@@ -17,7 +17,7 @@
                 <asp:Image ImageUrl=<%# "fotos/" + objFoto.Nome %>  Visible=<%# objEmpresa.IdFoto != null %> width="100px" height="100px" class="d-inline-block rounded-circle mr-1" runat="server"/>
                 <asp:Image ImageUrl="fotos/User_icon_BLACK-01.png" class="d-inline-block rounded-circle mr-1" Visible=<%# objEmpresa.IdFoto == null %> width="100px" height="100px" runat="server"/>
                 <asp:FileUpload runat="server" CssClass="form-control-file" ID="fuFoto" accept="image/png, image/jpeg" style="display:none"/>
-                <div><label for="fuFoto" id="imgLink" onclick="document.getElementById('ContentPlaceHolder1_fuFoto').click();">Nova Imagem...</label></div>
+                <div><label for="fuFoto" id="imgLink" onclick="document.getElementById('<%# fuFoto.ClientID %>').click();">Nova Imagem...</label></div>
             </div>
         </div>
         <div class="col-md-10">

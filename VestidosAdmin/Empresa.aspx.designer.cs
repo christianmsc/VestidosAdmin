@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VestidosAdmin {
-    
-    
-    public partial class Empresa {
-        
+namespace VestidosAdmin
+{
+
+
+    public partial class Empresa
+    {
+
         /// <summary>
         /// fuFoto control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace VestidosAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload fuFoto;
-        
+
         /// <summary>
         /// txbNome control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace VestidosAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txbNome;
-        
+
         /// <summary>
         /// txbCnpj control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace VestidosAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txbCnpj;
-        
+
         /// <summary>
         /// txbTelefone control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace VestidosAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txbTelefone;
-        
+
         /// <summary>
         /// txbEmailEmpresa control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace VestidosAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txbEmailEmpresa;
-        
+
         /// <summary>
         /// txbLogin control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace VestidosAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txbLogin;
-        
+
         /// <summary>
         /// txbSenhaEmpresa control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace VestidosAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txbSenhaEmpresa;
-        
+
         /// <summary>
         /// txbRua control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace VestidosAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txbRua;
-        
+
         /// <summary>
         /// txbNumero control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace VestidosAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txbNumero;
-        
+
         /// <summary>
         /// txbComplemento control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace VestidosAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txbComplemento;
-        
+
         /// <summary>
         /// txbBairro control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace VestidosAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txbBairro;
-        
+
         /// <summary>
         /// txbCidade control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace VestidosAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txbCidade;
-        
+
         /// <summary>
         /// txbEstado control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace VestidosAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txbEstado;
-        
+
         /// <summary>
         /// txbCep control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace VestidosAdmin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txbCep;
-        
+
         /// <summary>
         /// btnSalvar control.
         /// </summary>
