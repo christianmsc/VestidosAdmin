@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using cDados;
 using System.Web.Script.Serialization;
+using api.ViewModels;
 
 namespace api
 {
@@ -18,16 +19,17 @@ namespace api
         {
             JavaScriptSerializer json = new JavaScriptSerializer();
 
-            string email = context.Request.Form["email"];
-            string senha = context.Request.Form["senha"];
+            string loginJson = context.Request.Form["login"];
             int? usuarioId = null;
 
             try
             {
-                if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(senha))
+                if (string.IsNullOrWhiteSpace(loginJson))
                     throw new Exception("Parâmetros não informados");
 
-                if ((usuarioId = objUsuario.Logar(email, senha)) == null)
+                LoginRequest login = json.Deserialize<LoginRequest>(loginJson);
+
+                if ((usuarioId = objUsuario.Logar(login.Email, login.Senha)) == null)
                     throw new Exception("E-mail e/ou senha inválidos");
 
             }
@@ -37,7 +39,6 @@ namespace api
             }
 
             context.Response.ContentType = "text/json";
-            context.Response.AppendHeader("Access-Control-Allow-Origin", "*");
 
             if (usuarioId != null)
             {

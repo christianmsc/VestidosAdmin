@@ -22,7 +22,7 @@ namespace api
         {
 
             JavaScriptSerializer json = new JavaScriptSerializer();
-            List<cVestido> vestidos = null;
+            List<cVestido> vestidos;
             VestidosResposta vestidoResposta = null;
             List<VestidosResposta> vestidosResposta = null;
 
@@ -160,8 +160,7 @@ namespace api
                 mensagem = ex.Message;
             }
 
-            context.Response.ContentType = "text/json";
-            context.Response.AppendHeader("Access-Control-Allow-Origin", "*");
+            context.Response.ContentType = "application/json";
 
             if (!string.IsNullOrWhiteSpace(idVestido) && vestidoResposta != null)
             {

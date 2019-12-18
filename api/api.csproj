@@ -80,6 +80,7 @@
     <Compile Include="Vestidos.ashx.cs">
       <DependentUpon>Vestidos.ashx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\LoginRequest.cs" />
     <Compile Include="ViewModels\NovoUsuario.cs" />
     <Compile Include="ViewModels\VestidosResposta.cs" />
   </ItemGroup>
