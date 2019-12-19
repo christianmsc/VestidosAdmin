@@ -5,6 +5,9 @@ using System.Web;
 using cDados;
 using System.Web.Script.Serialization;
 using api.ViewModels;
+using System.Drawing;
+using System.IO;
+using System.Configuration;
 
 namespace api
 {
@@ -15,6 +18,7 @@ namespace api
     {
         private cUsuario objUsuario = new cUsuario();
         private cLogradouro objLogradouro = new cLogradouro();
+        private cFoto objFoto = new cFoto();
         private string mensagem = null;
 
         public void ProcessRequest(HttpContext context)
@@ -43,7 +47,7 @@ namespace api
 
                 if(objLogradouro.Id <= 0)
                 {
-                    throw new Exception("rrro ao salvar o endereço =(");
+                    throw new Exception("erro ao salvar o endereço =(");
                 }
 
                 objUsuario.Nome = usuario.Nome;
@@ -53,8 +57,11 @@ namespace api
                 objUsuario.Email = usuario.Email;
                 objUsuario.Senha = usuario.Senha;
                 objUsuario.IdLogradouro = objLogradouro.Id;
+                
                 if (!string.IsNullOrWhiteSpace(usuario.Foto)){
-                    //transformar URI ou BASE64 em imagem
+                    objFoto.Nome = usuario.Foto;
+                    objFoto = objFoto.Inserir(objFoto);
+                    objUsuario.IdFoto = objFoto.Id;
                 }
 
                 objUsuario = objUsuario.Inserir(objUsuario);
@@ -76,7 +83,6 @@ namespace api
             }
 
             context.Response.ContentType = "text/json";
-            context.Response.AppendHeader("Access-Control-Allow-Origin", "*");
 
             if (usuarioId != null)
             {
@@ -104,22 +110,6 @@ namespace api
                 return false;
             }
         }
-
-        private string GerarToken()
-        {
-            string caracteresPermitidos = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789!@$?_-";
-            char[] chars = new char[21];
-            Random rd = new Random();
-            for (int i = 0; i < 21; i++)
-            {
-                if (i.Equals(10))
-                {
-                    chars[i] = Convert.ToChar("-");
-                    i++;
-                }
-                chars[i] = caracteresPermitidos[rd.Next(0, caracteresPermitidos.Length)];
-            }
-            return new string(chars);
-        }
+        
     }
 }
